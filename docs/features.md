@@ -1,4 +1,4 @@
-# Log Fever — Feature Specification
+# FeverLog — Feature Specification
 
 Android app for logging fever in children. It works **entirely on the device, with no server and no account**.
 
@@ -226,7 +226,7 @@ The app is **English by default** and supports multiple languages. Every user-fa
 
 **Phase 2**
 
-- Chart and fever episodes. *(Open decision: the mockups put the period-selectable temperature chart on the Home screen. Decide whether that Home chart moves into the MVP, or stays Phase 2 and the mockup is simplified. Until decided, do not build it; CLAUDE.md rule 7.)*
+- Chart and fever episodes. *(Decision, proposed by Claude and accepted by the owner: the period-selectable Home chart stays in Phase 2. The MVP Home shows the status and medication cards without the chart; the mockup is simplified accordingly. Reasons: the chart is only meaningful with a verified fever threshold per country, and it is not needed for the quick-log goal.)*
 - "Fever-free for X hours" counter.
 - Siblings home screen (a card per child with an active episode).
 - Red flags.

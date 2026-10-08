@@ -1,4 +1,4 @@
-# Log Fever — CLAUDE.md
+# FeverLog — CLAUDE.md
 
 Android app for parents to log a child's fever, medication and symptoms. **Fully offline: no server, no account, no network access.** **English by default, multi-language by design** (see "Localization" below).
 
@@ -28,7 +28,7 @@ Items marked **(ASSUMED)** were proposed, not confirmed by the owner. If somethi
 - Hilt for DI (or manual DI if you judge it overkill — say so in the plan)
 - WorkManager for backup; AlarmManager for dose/measure reminders
 - Coil for image display (local files only); `kotlinx.serialization` for backup/export JSON
-- Package name: `com.logfever.app` **(ASSUMED — owner to confirm)**
+- App name: **FeverLog**. Package name: `com.feverlog.app` (derived from the app name; owner may change it before milestone 1)
 - Strings only in resources (see "Localization"). No hardcoded UI text.
 
 ## Data model principles
@@ -77,11 +77,12 @@ Before each milestone: post a short plan (files to touch, schema changes, risks)
 
 1. **Foundation + profiles + localization base** — project setup, theme, navigation shell, Room schema v1, Child CRUD, onboarding (language/country, disclaimer, first child), string resources, per-app language, locale-aware formatting helpers. *Done when:* app launches, a child can be created/edited/deleted (soft), data survives restart, schema export is committed, the app runs in English, Spanish and German (placeholder translations flagged unreviewed) and in an RTL pseudolocale without clipped or hardcoded text.
 2. **Temperature + timeline** — add temperature (value, method, time), timeline with edit/delete/undo, temperature display in °C/°F setting. *Done when:* logging takes ≤ 3 taps with defaults; invalid values are rejected; deleted entries can be restored from the snackbar.
-3. **Medication + dose timer** — medication library, dose logging, next-allowed-dose timer, early-dose warning, duplicate-ingredient warning, wrong-child guard. *Done when:* unit tests cover interval logic incl. time-zone/DST changes; a dose can be corrected after saving.
-4. **Notifications** — re-measure and "next dose allowed" reminders, exact-alarm permission flow, reschedule on reboot. *Done when:* works after process death and reboot; denied-permission path is handled.
-5. **Photos** — attach to any record (camera/picker), private storage, compression, EXIF strip, thumbnails, full-screen viewer, delete-with-record. *Done when:* no photo is visible in the system gallery; size limit enforced; orphan files are cleaned up.
-6. **Contacts** — doctor contacts, pinned country-based emergency number (from `emergency_numbers.json`), call (dial), email, SMS/WhatsApp intents, primary pediatrician per child. *Done when:* every action works with no extra permissions in default settings.
-7. **Backup + share** — "share status" message, auto-backup to a user-chosen folder (Storage Access Framework), restore, last-backup indicator, failure notification, idempotent import. *Done when:* backup → wipe app data → restore round-trips with identical content incl. photos (automated test).
+3. **Symptoms + notes** — `SymptomLog` (stable symptom codes from `docs/features.md` §5, optional fluid intake and urination) and `Note`; the "Log symptoms" button on the temperature form; the "+" bottom-bar button opens the symptom screen directly **(ASSUMED — a "New entry" bottom sheet is the open alternative, owner to confirm)**; symptoms and notes appear in the timeline with filter chips and the same edit/delete/undo as temperature. *Done when:* symptom codes are stored language-independently and display in the current language; a symptom/note can be added in ≤ 3 taps, edited, deleted and restored from the snackbar.
+4. **Medication + dose timer** — medication library, dose logging, next-allowed-dose timer, early-dose warning, duplicate-ingredient warning, wrong-child guard. *Done when:* unit tests cover interval logic incl. time-zone/DST changes; a dose can be corrected after saving.
+5. **Notifications** — re-measure and "next dose allowed" reminders, exact-alarm permission flow, reschedule on reboot. *Done when:* works after process death and reboot; denied-permission path is handled.
+6. **Photos** — attach to any record (camera/picker), private storage, compression, EXIF strip, thumbnails, full-screen viewer, delete-with-record. *Done when:* no photo is visible in the system gallery; size limit enforced; orphan files are cleaned up.
+7. **Contacts** — doctor contacts, pinned country-based emergency number (from `emergency_numbers.json`), call (dial), email, SMS/WhatsApp intents, primary pediatrician per child. *Done when:* every action works with no extra permissions in default settings.
+8. **Backup + share** — "share status" message, auto-backup to a user-chosen folder (Storage Access Framework), restore, last-backup indicator, failure notification, idempotent import. *Done when:* backup → wipe app data → restore round-trips with identical content incl. photos (automated test).
 
 Later phases (episodes/charts, red flags, PDF, widget, sibling dashboard, fever-free counter, app lock) follow `docs/features.md` §16 — do not start them without being asked.
 

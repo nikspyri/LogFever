@@ -25,12 +25,12 @@
       "x": 1410,
       "y": 0
     },
-    "t1": { "kind": "title1", "maxW": 1330, "text": "Log Fever: core screens", "w": 240, "x": 0, "y": -260 }
+    "t1": { "kind": "title1", "maxW": 1330, "text": "FeverLog: core screens", "w": 240, "x": 0, "y": -260 }
   },
   "order": [
     "Main.dc.html", "LogTemp.dc.html", "DoseWarning.dc.html", "Timeline.dc.html", "Contacts.dc.html",
     "Onboarding.dc.html", "Settings.dc.html", "Symptoms.dc.html", "Siblings.dc.html", "Night.dc.html", "LogDose.dc.html", "AddMedicine.dc.html"
   ],
   "pages": [],
-  "title": "Log Fever UI"
+  "title": "FeverLog UI"
 }

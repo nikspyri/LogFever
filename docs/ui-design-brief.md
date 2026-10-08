@@ -1,4 +1,4 @@
-# Log Fever — UI Design Brief for Figma
+# FeverLog — UI Design Brief for Figma
 
 A document for whoever designs the app in Figma (a person or Claude). It describes what the app is, who it is for, what each screen contains, and **where you are free to take initiative**. The full feature specification is in `features.md`; if the two disagree, that file wins on *what* the app does and this one wins on *how* it looks.
 
@@ -6,7 +6,7 @@ A document for whoever designs the app in Figma (a person or Claude). It describ
 
 ## 1. The app in brief
 
-**Log Fever** is an Android app for parents who want to log their child's fever: temperature, medication given and when, symptoms, photos (e.g. a rash), and to have the doctor's phone numbers at hand.
+**FeverLog** is an Android app for parents who want to log their child's fever: temperature, medication given and when, symptoms, photos (e.g. a rash), and to have the doctor's phone numbers at hand.
 
 It works **entirely on the phone, with no account and no server**. Data never leaves the device unless the user sends it (message, email, PDF).
 
@@ -92,7 +92,7 @@ For each screen, also design the **states**: normal, empty, loading, error, and 
 - **Current status card:** last temperature (very large), color + icon + status label, time and measurement method, a small trend indicator (rising/falling).
 - **Medication card:** last medication and time ("2h 10m ago"), and the **time until the next allowed dose** per medication, with a clear "allowed now" / "in 1h 40m" indication.
 - **"Fever-free for X hours" counter** (shown when applicable), with a note if the value may be affected by a recent fever reducer.
-- **Temperature chart inside the status card**, with a period selector of four buttons: **24 h · 2 days · 3 days · 7 days** (default 24 h). Changing the period rescales the time axis and the points. Line with a ring per reading, the latest reading filled, medication doses marked with a triangle marker, a legend in text, peak value shown, and a text description for screen readers. **No fever-threshold line** is drawn until a verified rule exists for the selected country (see §14). There is no separate chart screen at this stage; the fuller episode chart stays in 7.11 (Phase 2).
+- **Temperature chart inside the status card** *(Phase 2: not built in the MVP, see `features.md` §16; the MVP Home omits it)*, with a period selector of four buttons: **24 h · 2 days · 3 days · 7 days** (default 24 h). Changing the period rescales the time axis and the points. Line with a ring per reading, the latest reading filled, medication doses marked with a triangle marker, a legend in text, peak value shown, and a text description for screen readers. **No fever-threshold line** is drawn until a verified rule exists for the selected country (see §14). There is no separate chart screen at this stage; the fuller episode chart stays in 7.11 (Phase 2).
 - **Quick actions** (large buttons, Figma-style quick log): "Temperature" and "Dose". Calling a doctor lives in the Contacts tab.
 - The "+" button in the bottom bar (see §6) and the entry count. The recent-entries list is not on Home in the current mockups; the Timeline tab covers it.
 - **Fit:** at the default font scale the Home screen must fit one phone screen (844 dp tall reference) **without scrolling**; the mockup budget is about 780 dp of content plus the bar. At large font scales scrolling is acceptable.
