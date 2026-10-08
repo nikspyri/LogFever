@@ -31,6 +31,14 @@ Items marked **(ASSUMED)** were proposed, not confirmed by the owner. If somethi
 - App name: **FeverLog**. Package name: `com.feverlog.app` (derived from the app name; owner may change it before milestone 1)
 - Strings only in resources (see "Localization"). No hardcoded UI text.
 
+## Toolchain (verified in the skeleton)
+
+- AGP 9.4.1 (built-in Kotlin, so no `org.jetbrains.kotlin.android` plugin), Gradle 9.8.1 via the wrapper, Kotlin Compose plugin 2.3.21, Compose BOM 2026.09.00, JDK 21. The latest Compose BOM requires AGP 9.1+ and compileSdk 37; compileSdk = targetSdk = 37, minSdk 26.
+- Android SDK lives outside the repo (`ANDROID_HOME`, with platform `android-37.0`, build-tools `37.0.0`). `local.properties` is git-ignored.
+- No emulator is available in the cloud container (no `/dev/kvm`). Visual and UI checks run on the JVM with Robolectric + Roborazzi (`@GraphicsMode(NATIVE)`). `./gradlew recordRoborazziDebug` writes PNGs to `app/build/outputs/roborazzi/`; look at them before claiming a screen is done.
+- Verification gate before every commit: `./gradlew assembleDebug testDebugUnitTest lintDebug`.
+- Not coverable on the JVM (need a real device): per-app language from system settings, notifications and exact alarms, camera/Photo Picker, intents, reboot behaviour. Milestones 5-8 list manual device checks for these.
+
 ## Data model principles
 
 - Event-based. Every record has: `id` (UUID string), `childId`, `createdAt`, `updatedAt`, `deletedAt` (nullable, soft delete so undo works and future merge is possible).
