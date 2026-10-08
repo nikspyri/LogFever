@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home: night mode</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#17120F;color:#E6D5BE;font-family:'Figtree',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden">
+  <div style="padding:20px 20px 0;display:flex;flex-direction:column;gap:12px;flex-grow:1">
+
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px;height:56px;padding:0 18px 0 8px;border-radius:28px;background:#6B4A2A;color:#F6E7D0;font-weight:600;font-size:17px">
+        <span style="width:40px;height:40px;border-radius:20px;background:#F6E7D0;color:#4A3018;display:flex;align-items:center;justify-content:center;font-weight:700">M</span>Maya
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;height:56px;padding:0 18px 0 8px;border-radius:28px;background:#241D18;border:2px solid #4A3C30;font-weight:600;font-size:17px">
+        <span style="width:40px;height:40px;border-radius:20px;background:#3A2E24;display:flex;align-items:center;justify-content:center;font-weight:700">L</span>Leo
+      </div>
+    </div>
+
+    <div style="background:#241D18;border-radius:24px;padding:16px;border:1px solid #3A2E24;display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:14px;font-weight:600;color:#B9A68E;letter-spacing:.02em">LAST READING</div>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+        <div style="font-size:64px;line-height:1;font-weight:700;letter-spacing:-0.02em">38.4<span style="font-size:28px;font-weight:600;margin-inline-start:4px">°C</span></div>
+        <div style="display:flex;align-items:center;gap:6px;background:#4A2A1D;color:#F2B9A0;border-radius:16px;padding:8px 12px;font-weight:600;font-size:15px;margin-bottom:6px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>Fever range
+        </div>
+      </div>
+      <div style="font-size:15px;color:#B9A68E">Today 02:20 · 25 min ago · Forehead</div>
+      <div style="border-top:1px solid #3A2E24;padding-top:12px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px">
+          <span style="height:44px;border-radius:12px;font-size:14px;font-weight:700;background:#C98B4A;color:#1F1409;display:flex;align-items:center;justify-content:center">24 h</span>
+          <span style="height:44px;border-radius:12px;font-size:14px;font-weight:700;border:2px solid #C98B4A;box-sizing:border-box;color:#E0B079;display:flex;align-items:center;justify-content:center">2 days</span>
+          <span style="height:44px;border-radius:12px;font-size:14px;font-weight:700;border:2px solid #C98B4A;box-sizing:border-box;color:#E0B079;display:flex;align-items:center;justify-content:center">3 days</span>
+          <span style="height:44px;border-radius:12px;font-size:14px;font-weight:700;border:2px solid #C98B4A;box-sizing:border-box;color:#E0B079;display:flex;align-items:center;justify-content:center">7 days</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="width:24px;height:100px;display:flex;flex-direction:column;justify-content:space-between;font-size:13px;line-height:16px;color:#B9A68E;text-align:end"><span>40</span><span>39</span><span>38</span><span>37</span><span>36</span></div>
+          <svg viewBox="0 0 284 100" width="100%" height="100" role="img" aria-label="Temperature chart, last 24 hours. Peak 38.9 degrees, latest 38.4 degrees, 10 readings, 2 doses recorded." style="display:block;flex-grow:1">
+            <path d="M0 8H284M0 29H284M0 50H284M0 71H284M0 92H284" stroke="#3A2E24" stroke-width="1" fill="none"/>
+            <path d="M28.7 47.9L62.7 37.4L96.7 31.1L130.7 43.7L164.7 54.2L198.7 45.8L221.3 31.1L244.0 35.3L261.0 41.6L273.5 41.6" fill="none" stroke="#E0B079" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M24.7 47.9a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M58.7 37.4a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M92.7 31.1a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M126.7 43.7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M160.7 54.2a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M194.7 45.8a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M217.3 31.1a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M240.0 35.3a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M257.0 41.6a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" fill="#241D18" stroke="#E0B079" stroke-width="2.5"/>
+            <path d="M268.0 41.6a5.5 5.5 0 1 0 11.0 0a5.5 5.5 0 1 0 -11.0 0" fill="#E0B079" stroke="#E0B079" stroke-width="2.5"/>
+            <path d="M85.3 80l5 10h-10zM210.0 80l5 10h-10z" fill="#F2B9A0"/>
+          </svg>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-inline-start:30px;font-size:13px;color:#B9A68E"><span>-24 h</span><span>-18 h</span><span>-12 h</span><span>-6 h</span><span>now</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#B9A68E;padding-inline-start:30px"><span>○ Reading (°C) · ▲ Dose recorded</span><span>Peak 38.9 °C</span></div>
+      </div>
+    </div>
+
+    <div style="background:#241D18;border-radius:24px;padding:16px;border:1px solid #3A2E24;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between"><div style="font-size:14px;font-weight:600;color:#B9A68E;letter-spacing:.02em">LAST DOSE RECORDED</div><div style="font-size:14px;color:#B9A68E">00:50</div></div>
+      <div style="font-size:20px;font-weight:600">Paracetamol · 7.5 ml</div>
+      <div style="display:flex;align-items:center;gap:10px;background:#2E241C;border-radius:14px;padding:12px 14px;font-size:15px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0B079" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span>Next dose allowed from <b>06:50</b> · in 4 h 30 min</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+      <a href="LogTemp.dc.html" style="height:64px;border-radius:20px;background:#C98B4A;color:#1F1409;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px">Temperature</a>
+      <a href="LogDose.dc.html" style="height:64px;border-radius:20px;background:#241D18;color:#E0B079;border:2px solid #C98B4A;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px">Dose</a>
+    </div>
+
+  </div>
+  <nav style="position:relative;height:76px;background:#201915;border-top:1px solid #3A2E24;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 96px minmax(0,1fr) minmax(0,1fr)">
+    <a href="Symptoms.dc.html" aria-label="Add entry. 31 entries logged in total" style="position:absolute;inset-inline-start:50%;top:-40px;width:80px;height:80px;margin-inline-start:-40px;border-radius:40px;background:#A8372A;color:#fff;border:6px solid #17120F;box-sizing:content-box;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.25)">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      <span style="position:absolute;top:-6px;inset-inline-end:-10px;min-width:30px;height:26px;padding:0 6px;box-sizing:border-box;border-radius:13px;background:#E6D5BE;color:#fff;border:2px solid #17120F;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center">31</span>
+    </a>
+    <a href="Night.dc.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#E0B079;font-weight:700;font-size:13px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Home</a>
+    <a href="Timeline.dc.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#B9A68E;font-weight:600;font-size:13px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>Timeline</a>
+    <span aria-hidden="true"></span>
+    <a href="Contacts.dc.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#B9A68E;font-weight:600;font-size:13px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Contacts</a>
+    <a href="Settings.dc.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#B9A68E;font-weight:600;font-size:13px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.3l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2.2-1.3L14 3h-4l-.4 2.5a7 7 0 0 0-2.2 1.3l-2.3-1-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .9.1 1.3l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2.2 1.3L10 21h4l.4-2.5a7 7 0 0 0 2.2-1.3l2.3 1 2-3.4-2-1.5c.1-.4.1-.9.1-1.3z"/></svg>Settings</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

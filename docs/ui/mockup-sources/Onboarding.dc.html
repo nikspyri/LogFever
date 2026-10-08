@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Onboarding</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F3F6F5;color:#12302C;font-family:'Figtree',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:28px 20px 24px;gap:18px">
+
+  <div style="display:flex;gap:6px" aria-label="Step 1 of 3">
+    <span style="flex-grow:1;height:6px;border-radius:3px;background:#1B645C"></span>
+    <span style="flex-grow:1;height:6px;border-radius:3px;background:#C9D6D3"></span>
+    <span style="flex-grow:1;height:6px;border-radius:3px;background:#C9D6D3"></span>
+  </div>
+
+  <div style="margin-top:12px">
+    <div style="font-size:32px;line-height:1.15;font-weight:700">Welcome to Log Fever</div>
+    <div style="font-size:17px;line-height:1.45;color:#4F6662;margin-top:10px">A quiet place to note temperatures and medicines. Everything stays on this phone.</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="font-size:14px;font-weight:600;color:#4F6662;letter-spacing:.02em">LANGUAGE</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;height:60px;background:#fff;border:2px solid #1B645C;border-radius:16px;padding:0 16px;font-size:17px;font-weight:600">
+      <span>English</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B645C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="font-size:14px;font-weight:600;color:#4F6662;letter-spacing:.02em">COUNTRY</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;height:60px;background:#fff;border:1px solid #C9D6D3;border-radius:16px;padding:0 16px;font-size:17px;font-weight:600">
+      <span>[Detected from device region]</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4F6662" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div style="font-size:13px;line-height:1.4;color:#4F6662">Used to show the right emergency number and units. You can change it later.</div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #D5E0DD;border-radius:18px;padding:16px;display:flex;gap:12px;align-items:flex-start">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B645C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+    <div style="font-size:15px;line-height:1.45">This app records what you enter. It does not diagnose, suggest doses or replace a doctor.</div>
+  </div>
+
+  <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+    <a href="Main.dc.html" style="height:64px;border-radius:20px;background:#1B645C;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px">I understand, continue</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

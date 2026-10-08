@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F3F6F5;color:#12302C;font-family:'Figtree',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden">
+
+  <div style="padding:20px 20px 0;display:flex;flex-direction:column;gap:12px;flex-grow:1">
+
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px;height:56px;padding:0 18px 0 8px;border-radius:28px;background:#1B645C;color:#fff;font-weight:600;font-size:17px">
+        <span style="width:40px;height:40px;border-radius:20px;background:#fff;color:#1B645C;display:flex;align-items:center;justify-content:center;font-weight:700">M</span>
+        Maya
+        <span style="font-weight:400;font-size:14px;opacity:.9">3 y</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;height:56px;padding:0 18px 0 8px;border-radius:28px;background:#fff;border:2px solid #C9D6D3;font-weight:600;font-size:17px">
+        <span style="width:40px;height:40px;border-radius:20px;background:#E4EEEC;color:#12302C;display:flex;align-items:center;justify-content:center;font-weight:700">L</span>
+        Leo
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:24px;padding:16px;border:1px solid #D5E0DD;display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:14px;font-weight:600;color:#4F6662;letter-spacing:.02em">LAST READING</div>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+        <div style="font-size:64px;line-height:1;font-weight:700;letter-spacing:-0.02em">38.4<span style="font-size:28px;font-weight:600;margin-inline-start:4px">°C</span></div>
+        <div style="display:flex;align-items:center;gap:6px;background:#FBEBE4;color:#8A3A22;border-radius:16px;padding:8px 12px;font-weight:600;font-size:15px;margin-bottom:6px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+          Fever range
+        </div>
+      </div>
+      <div style="font-size:15px;color:#4F6662">Today 14:20 · 25 min ago · Forehead</div>
+      <div style="border-top:1px solid #E4ECEA;padding-top:12px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px">
+          <sc-for list="{{ranges}}" as="r" hint-placeholder-count="4">
+            <button onClick="{{r.pick}}" aria-pressed="{{r.on}}" style="height:44px;border-radius:12px;font-size:14px;font-weight:700;border:2px solid #1B645C;background:{{r.bg}};color:{{r.ink}};font-family:'Figtree',system-ui,sans-serif;cursor:pointer">{{r.label}}</button>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="width:24px;height:100px;display:flex;flex-direction:column;justify-content:space-between;font-size:13px;line-height:16px;color:#4F6662;text-align:end"><span>40</span><span>39</span><span>38</span><span>37</span><span>36</span></div>
+          <svg viewBox="0 0 284 100" width="100%" height="100" role="img" aria-label="{{summaryLabel}}" style="display:block;flex-grow:1">
+            <path d="M0 8H284M0 29H284M0 50H284M0 71H284M0 92H284" stroke="#E4ECEA" stroke-width="1" fill="none"/>
+            <path d="{{linePath}}" fill="none" stroke="#1B645C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="{{dotsPath}}" fill="#fff" stroke="#1B645C" stroke-width="2.5"/>
+            <path d="{{lastDotPath}}" fill="#1B645C" stroke="#1B645C" stroke-width="2.5"/>
+            <path d="{{dosePath}}" fill="#8A3A22"/>
+          </svg>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-inline-start:30px;font-size:13px;color:#4F6662">
+          <sc-for list="{{xLabels}}" as="x" hint-placeholder-count="5"><span>{{x}}</span></sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:#4F6662;padding-inline-start:30px"><span>○ Reading (°C) · ▲ Dose recorded</span><span>Peak {{peak}}</span></div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:24px;padding:16px;border:1px solid #D5E0DD;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:14px;font-weight:600;color:#4F6662;letter-spacing:.02em">LAST DOSE RECORDED</div>
+        <div style="font-size:14px;color:#4F6662">12:50</div>
+      </div>
+      <div style="font-size:20px;font-weight:600">Paracetamol · 7.5 ml</div>
+      <div style="display:flex;align-items:center;gap:10px;background:#E8F1EF;border-radius:14px;padding:12px 14px;font-size:15px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B645C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span>Next dose allowed from <b>18:50</b> · in 4 h 30 min</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+      <a href="LogTemp.dc.html" style="height:64px;border-radius:20px;background:#1B645C;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:17px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/></svg>
+        Temperature
+      </a>
+      <a href="LogDose.dc.html" style="height:64px;border-radius:20px;background:#fff;color:#1B645C;border:2px solid #1B645C;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:17px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="7" rx="3.5" transform="rotate(-35 12 12.5)"/><path d="M9.5 8.5l6 6"/></svg>
+        Dose
+      </a>
+    </div>
+
+  </div>
+
+  <nav style="position:relative;height:76px;background:#fff;border-top:1px solid #D5E0DD;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 96px minmax(0,1fr) minmax(0,1fr)">
+    <a href="Symptoms.dc.html" aria-label="Add entry. 24 entries logged in total" style="position:absolute;inset-inline-start:50%;top:-40px;width:80px;height:80px;margin-inline-start:-40px;border-radius:40px;background:#C0392B;color:#fff;border:6px solid #F3F6F5;box-sizing:content-box;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.25)">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      <span style="position:absolute;top:-6px;inset-inline-end:-10px;min-width:30px;height:26px;padding:0 6px;box-sizing:border-box;border-radius:13px;background:#12302C;color:#fff;border:2px solid #F3F6F5;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center">24</span>
+    </a>
+    <a href="Main.dc.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#1B645C;font-weight:700;font-size:13px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Home</a>
+    <a href="Timeline.dc.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#4F6662;font-weight:600;font-size:13px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>Timeline</a>
+    <span aria-hidden="true"></span>
+    <a href="Contacts.dc.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#4F6662;font-weight:600;font-size:13px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Contacts</a>
+    <a href="Onboarding.dc.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#4F6662;font-weight:600;font-size:13px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.3l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2.2-1.3L14 3h-4l-.4 2.5a7 7 0 0 0-2.2 1.3l-2.3-1-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .9.1 1.3l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2.2 1.3L10 21h4l.4-2.5a7 7 0 0 0 2.2-1.3l2.3 1 2-3.4-2-1.5c.1-.4.1-.9.1-1.3z"/></svg>Settings</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { range: '24' }; }
+  renderVals() {
+    // Sample data only. hours = hours before now.
+    const D = {
+      '24': { span: 24, labels: ['-24 h','-18 h','-12 h','-6 h','now'],
+        pts: [[22,38.1],[19,38.6],[16,38.9],[13,38.3],[10,37.8],[7,38.2],[5,38.9],[3,38.7],[1.5,38.4],[0.4,38.4]], doses: [17,6] },
+      '48': { span: 48, labels: ['-48 h','-36 h','-24 h','-12 h','now'],
+        pts: [[46,37.4],[42,37.9],[38,38.4],[34,38.8],[30,38.2],[26,37.6],[22,38.1],[18,38.6],[14,38.9],[10,38.3],[6,38.7],[3,38.8],[0.4,38.4]], doses: [36,24,12,5] },
+      '72': { span: 72, labels: ['-3 d','-2 d','-1 d','-12 h','now'],
+        pts: [[70,37.2],[64,37.8],[58,38.4],[52,38.9],[46,38.5],[40,37.9],[34,38.2],[28,38.7],[22,38.9],[16,38.5],[10,38.6],[4,38.4]], doses: [44,30,20,6] },
+      '168': { span: 168, labels: ['-7 d','-5 d','-3 d','-1 d','now'],
+        pts: [[160,36.8],[148,37.0],[136,37.6],[124,38.2],[112,38.9],[100,39.1],[88,38.8],[76,38.3],[64,37.9],[52,38.1],[40,38.6],[28,38.9],[16,38.5],[4,38.4]], doses: [100,88,64,40,28,6] }
+    };
+    const key = this.state.range, d = D[key];
+    const X = h => (6 + (1 - h / d.span) * 272);
+    const Y = v => (8 + (40 - v) / 4 * 84);
+    const pts = d.pts.map(([h, v]) => [X(h), Y(v), v]);
+    const f = n => n.toFixed(1);
+    const circle = (x, y, r) => 'M' + f(x - r) + ' ' + f(y) + 'a' + r + ' ' + r + ' 0 1 0 ' + (2 * r) + ' 0a' + r + ' ' + r + ' 0 1 0 ' + (-2 * r) + ' 0';
+    const last = pts[pts.length - 1];
+    const peak = Math.max(...pts.map(p => p[2]));
+    const tabs = [['24','24 h'],['48','2 days'],['72','3 days'],['168','7 days']].map(([k, label]) => ({
+      label, on: key === k, bg: key === k ? '#1B645C' : '#fff', ink: key === k ? '#fff' : '#1B645C',
+      pick: () => this.setState({ range: k })
+    }));
+    return {
+      ranges: tabs,
+      linePath: 'M' + pts.map(p => f(p[0]) + ' ' + f(p[1])).join('L'),
+      dotsPath: pts.slice(0, -1).map(p => circle(p[0], p[1], 4)).join(''),
+      lastDotPath: circle(last[0], last[1], 5.5),
+      dosePath: d.doses.map(h => 'M' + f(X(h)) + ' 80l5 10h-10z').join(''),
+      xLabels: d.labels,
+      peak: peak.toFixed(1) + ' °C',
+      summaryLabel: 'Temperature chart. Peak ' + peak.toFixed(1) + ' degrees, latest ' + last[2].toFixed(1) + ' degrees, ' + pts.length + ' readings, ' + d.doses.length + ' doses recorded.'
+    };
+  }
+}
+</script>
+</body>
+</html>

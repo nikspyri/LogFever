@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Log temperature</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+button{font-family:'Figtree',system-ui,sans-serif;cursor:pointer}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F3F6F5;color:#12302C;font-family:'Figtree',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:20px;gap:10px;position:relative">
+
+  <div style="display:flex;align-items:center;gap:12px;height:56px">
+    <a href="Main.dc.html" aria-label="Back" style="width:56px;height:56px;border-radius:28px;background:#fff;border:1px solid #D5E0DD;box-sizing:border-box;display:flex;align-items:center;justify-content:center">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#12302C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </a>
+    <div style="font-size:22px;font-weight:700">Log temperature</div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:10px;background:#E8F1EF;border-radius:16px;padding:12px 14px">
+    <span style="width:36px;height:36px;border-radius:18px;background:#1B645C;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700">M</span>
+    <span style="font-size:15px;color:#4F6662">Logging for</span>
+    <span style="font-size:17px;font-weight:700">Maya</span>
+  </div>
+
+  <div style="background:#fff;border-radius:24px;border:1px solid #D5E0DD;padding:20px;display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div style="font-size:72px;line-height:1;font-weight:700;letter-spacing:-0.02em" aria-live="polite">{{display}}<span style="font-size:28px;font-weight:600;margin-inline-start:4px">°C</span></div>
+    <div style="display:flex;align-items:center;gap:6px;border-radius:16px;padding:8px 14px;font-weight:600;font-size:15px;background:{{statusBg}};color:{{statusInk}}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{statusIcon}}"/></svg>
+      {{statusText}}
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%;margin-top:6px">
+      <button onClick="{{minusBig}}" style="height:64px;border-radius:18px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:18px;font-weight:700">−0.5</button>
+      <button onClick="{{minus}}" style="height:64px;border-radius:18px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:18px;font-weight:700">−0.1</button>
+      <button onClick="{{plus}}" style="height:64px;border-radius:18px;border:0;background:#1B645C;color:#fff;font-size:18px;font-weight:700">+0.1</button>
+      <button onClick="{{plusBig}}" style="height:64px;border-radius:18px;border:0;background:#1B645C;color:#fff;font-size:18px;font-weight:700">+0.5</button>
+    </div>
+    <div style="font-size:13px;color:#4F6662">Starts from the last reading. Accepts 38.4 or 38,4 when typed.</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="font-size:14px;font-weight:600;color:#4F6662;letter-spacing:.02em">METHOD</div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+      <sc-for list="{{methods}}" as="m" hint-placeholder-count="4">
+        <button onClick="{{m.pick}}" aria-pressed="{{m.on}}" style="height:56px;border-radius:16px;font-size:16px;font-weight:600;border:2px solid {{m.border}};background:{{m.bg}};color:{{m.ink}}">{{m.label}}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #D5E0DD;border-radius:16px;padding:8px 12px 8px 16px;min-height:72px;flex-shrink:0">
+    <div style="flex-grow:1;min-width:0" aria-live="polite">
+      <div style="font-size:13px;color:#4F6662">Date and time · {{dateShort}}</div>
+      <div style="font-size:26px;font-weight:700;line-height:1.15">{{timeStr}}</div>
+      <div style="font-size:13px;font-weight:600;color:{{lockInk}}">{{lockText}}</div>
+    </div>
+    <button onClick="{{nowDt}}" aria-pressed="{{changed}}" style="height:48px;min-width:64px;padding:0 14px;border-radius:14px;border:2px solid #1B645C;background:{{nowBg}};color:{{nowInk}};font-size:16px;font-weight:700">Now</button>
+    <button onClick="{{openDt}}" style="height:48px;padding:0 14px;border-radius:14px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:16px;font-weight:700">Change</button>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+    <a href="Symptoms.dc.html" style="height:56px;border-radius:16px;background:#fff;border:2px solid #C9D6D3;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:16px">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Log symptoms</a>
+    <button style="height:56px;border-radius:16px;background:#fff;border:2px solid #C9D6D3;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:16px;color:#12302C">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12l-8.5 8.5a5 5 0 0 1-7-7L14 5a3.3 3.3 0 0 1 4.7 4.7L10 18.4a1.7 1.7 0 0 1-2.4-2.4L15 8.6"/></svg>Attach photo</button>
+  </div>
+
+  <a href="Main.dc.html" style="margin-top:auto;height:64px;border-radius:20px;background:#1B645C;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px">Save for Maya</a>
+  <sc-if value="{{editing}}" hint-placeholder-val="{{false}}">
+    <div style="position:absolute;inset:0;background:rgba(18,48,44,.5);display:flex;flex-direction:column;justify-content:flex-end;z-index:10">
+      <div role="dialog" aria-label="Date and time" style="background:#fff;border-radius:24px 24px 0 0;padding:20px 20px 24px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:20px;font-weight:700">Date and time</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <button onClick="{{dayBack}}" aria-label="Previous day" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">‹</button>
+          <div style="flex-grow:1;text-align:center;font-size:18px;font-weight:700" aria-live="polite">{{dateTxt}}</div>
+          <button onClick="{{dayFwd}}" aria-label="Next day" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0;opacity:{{fwdOpacity}}">›</button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px">
+          <button onClick="{{hMinus}}" aria-label="Hour earlier" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">−</button>
+          <div style="width:48px;text-align:center;font-size:30px;font-weight:700" aria-live="polite">{{hh}}</div>
+          <button onClick="{{hPlus}}" aria-label="Hour later" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">+</button>
+          <div style="font-size:30px;font-weight:700;width:14px;text-align:center">:</div>
+          <button onClick="{{mMinus}}" aria-label="5 minutes earlier" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">−</button>
+          <div style="width:48px;text-align:center;font-size:30px;font-weight:700" aria-live="polite">{{mm}}</div>
+          <button onClick="{{mPlus}}" aria-label="5 minutes later" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">+</button>
+        </div>
+        <div style="font-size:13px;color:#4F6662;text-align:center">Dates in the future are not allowed.</div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px">
+          <button onClick="{{resetDt}}" style="height:56px;border-radius:16px;border:2px solid #7A8F8B;background:#fff;color:#12302C;font-size:16px;font-weight:600">Set to now and lock</button>
+          <button onClick="{{doneDt}}" style="height:56px;border-radius:16px;border:0;background:#1B645C;color:#fff;font-size:17px;font-weight:700">Done</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { t: 384, method: 'forehead', changed: false, editing: false, dayOff: 0, min: 14 * 60 + 45 }; }
+  renderVals() {
+    const t = this.state.t;
+    const bump = (d) => () => this.setState({ t: Math.min(430, Math.max(340, this.state.t + d)) });
+    const fever = t >= 380;
+    const methods = [['forehead','Forehead'],['ear','Ear'],['armpit','Armpit'],['mouth','Mouth']].map(([k, label]) => {
+      const on = this.state.method === k;
+      return { label, on, pick: () => this.setState({ method: k }),
+        border: on ? '#1B645C' : '#C9D6D3', bg: on ? '#E8F1EF' : '#fff', ink: '#12302C' };
+    });
+    const st = this.state, NOW = 14 * 60 + 45;
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], mons = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const dd = new Date(2026, 9, 7 - st.dayOff);
+    const dateTxt = (st.dayOff === 0 ? 'Today · ' : st.dayOff === 1 ? 'Yesterday · ' : '') + days[dd.getDay()] + ' ' + dd.getDate() + ' ' + mons[dd.getMonth()];
+    const p2 = n => String(n).padStart(2, '0');
+    const hmStr = t => { const x = ((t % 1440) + 1440) % 1440; return p2(Math.floor(x / 60)) + ':' + p2(x % 60); };
+    const setMin = d => () => { let m = ((st.min + d) % 1440 + 1440) % 1440; if (st.dayOff === 0 && m > NOW) m = NOW; this.setState({ min: m, changed: true }); };
+    const dt = {
+      dateShort: (st.dayOff === 0 ? 'Today' : st.dayOff === 1 ? 'Yesterday' : days[dd.getDay()]) + ' ' + dd.getDate() + ' ' + mons[dd.getMonth()],
+      timeStr: hmStr(st.min), changed: st.changed,
+      lockText: st.changed ? 'Time locked' : 'Not locked yet · tap Now',
+      lockInk: st.changed ? '#1B645C' : '#4F6662',
+      nowBg: st.changed ? '#1B645C' : '#fff', nowInk: st.changed ? '#fff' : '#1B645C',
+      nowDt: () => this.setState({ changed: true, dayOff: 0, min: NOW }),
+      dateTxt, hh: p2(Math.floor(st.min / 60)), mm: p2(st.min % 60),
+      editing: st.editing, fwdOpacity: st.dayOff === 0 ? 0.35 : 1,
+      openDt: () => this.setState({ editing: true }),
+      doneDt: () => this.setState({ editing: false }),
+      resetDt: () => this.setState({ changed: true, dayOff: 0, min: NOW, editing: false }),
+      dayBack: () => this.setState({ dayOff: Math.min(7, st.dayOff + 1), changed: true }),
+      dayFwd: () => this.setState({ dayOff: Math.max(0, st.dayOff - 1), min: st.dayOff === 1 ? Math.min(st.min, NOW) : st.min, changed: true }),
+      hMinus: setMin(-60), hPlus: setMin(60), mMinus: setMin(-5), mPlus: setMin(5)
+    };
+    return {
+      ...dt,
+      display: (t / 10).toFixed(1),
+      statusText: fever ? 'Fever range' : 'Below fever range',
+      statusIcon: fever ? 'M12 19V5M5 12l7-7 7 7' : 'M5 12l5 5L20 7',
+      statusBg: fever ? '#FBEBE4' : '#E8F1EF',
+      statusInk: fever ? '#8A3A22' : '#1B645C',
+      minus: bump(-1), plus: bump(1), minusBig: bump(-5), plusBig: bump(5),
+      methods
+    };
+  }
+}
+</script>
+</body>
+</html>

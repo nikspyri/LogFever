@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Log dose</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+button,input{font-family:'Figtree',system-ui,sans-serif}
+button{cursor:pointer}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F3F6F5;color:#12302C;font-family:'Figtree',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:20px;gap:10px;position:relative">
+
+  <div style="display:flex;align-items:center;gap:12px;height:56px;flex-shrink:0">
+    <a href="Main.dc.html" aria-label="Back" style="width:56px;height:56px;border-radius:28px;background:#fff;border:1px solid #D5E0DD;box-sizing:border-box;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#12302C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <div style="font-size:22px;font-weight:700">Log dose</div>
+    <div style="margin-inline-start:auto;display:flex;align-items:center;gap:8px;background:#E8F1EF;border-radius:20px;padding:4px 14px 4px 4px;font-weight:700;font-size:16px">
+      <span style="width:32px;height:32px;border-radius:16px;background:#1B645C;color:#fff;display:flex;align-items:center;justify-content:center">M</span>Maya
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #D5E0DD;border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;flex-shrink:0">
+    <div style="font-size:13px;font-weight:600;color:#4F6662;letter-spacing:.02em">PREVIOUS DOSE · {{ingredient}}</div>
+    <div style="font-size:18px;font-weight:700">{{prevText}}</div>
+    <div style="font-size:14px;color:#4F6662">{{prevSub}}</div>
+  </div>
+
+  <div style="position:relative;flex-shrink:0">
+    <button onClick="{{toggleMenu}}" aria-haspopup="listbox" aria-expanded="{{menuOpen}}" style="width:100%;min-height:64px;border-radius:16px;border:2px solid #1B645C;background:#fff;padding:6px 14px;display:flex;align-items:center;gap:10px;text-align:start;color:#12302C">
+      <span style="flex-grow:1"><span style="display:block;font-size:13px;color:#4F6662">Medicine</span><span style="display:block;font-size:19px;font-weight:700">{{medLabel}}</span></span>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B645C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform:rotate({{chevRot}})"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+      <div role="listbox" aria-label="Medicines" style="position:absolute;top:70px;inset-inline:0;z-index:5;background:#fff;border:2px solid #1B645C;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.2);overflow:hidden">
+        <sc-for list="{{meds}}" as="m" hint-placeholder-count="2">
+          <button role="option" aria-selected="{{m.on}}" onClick="{{m.pick}}" style="width:100%;min-height:56px;border:0;border-bottom:1px solid #E4ECEA;background:{{m.bg}};padding:0 16px;display:flex;align-items:center;gap:10px;text-align:start;font-size:17px;font-weight:700;color:#12302C">
+            <span style="flex-grow:1">{{m.label}}<span style="display:block;font-size:13px;font-weight:500;color:#4F6662">{{m.sub}}</span></span>
+            <span style="color:#1B645C;font-size:20px;font-weight:700">{{m.mark}}</span>
+          </button>
+        </sc-for>
+        <a href="AddMedicine.dc.html" style="box-sizing:border-box;width:100%;min-height:56px;background:#fff;padding:0 16px;display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:#1B645C">+ Add medicine</a>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="background:#fff;border:1px solid #D5E0DD;border-radius:18px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;flex-shrink:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+      <div>
+        <div style="font-size:13px;color:#4F6662">Amount given</div>
+        <div style="font-size:30px;font-weight:700;line-height:1.1" aria-live="polite">{{amount}} <span style="font-size:18px;font-weight:600">{{unitText}}</span></div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onClick="{{less}}" aria-label="Decrease amount" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">−</button>
+        <button onClick="{{more}}" aria-label="Increase amount" style="width:56px;height:56px;border-radius:16px;border:0;background:#1B645C;color:#fff;font-size:26px;font-weight:700;padding:0">+</button>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+      <sc-for list="{{units}}" as="u" hint-placeholder-count="2">
+        <button onClick="{{u.pick}}" aria-pressed="{{u.on}}" style="height:48px;border-radius:12px;font-size:16px;font-weight:700;border:2px solid #1B645C;background:{{u.bg}};color:{{u.ink}}">{{u.label}}</button>
+      </sc-for>
+    </div>
+    <div style="font-size:13px;line-height:1.35;color:#4F6662">Check the medicine label for the right amount. Tablets can be half: use 0.5 steps.</div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #D5E0DD;border-radius:16px;padding:8px 12px 8px 16px;min-height:72px;flex-shrink:0">
+    <div style="flex-grow:1;min-width:0" aria-live="polite">
+      <div style="font-size:13px;color:#4F6662">Date and time given · {{dateShort}}</div>
+      <div style="font-size:26px;font-weight:700;line-height:1.15">{{timeStr}}</div>
+      <div style="font-size:13px;font-weight:600;color:{{lockInk}}">{{lockText}}</div>
+    </div>
+    <button onClick="{{nowDt}}" aria-pressed="{{changed}}" style="height:48px;min-width:64px;padding:0 14px;border-radius:14px;border:2px solid #1B645C;background:{{nowBg}};color:{{nowInk}};font-size:16px;font-weight:700">Now</button>
+    <button onClick="{{openDt}}" style="height:48px;padding:0 14px;border-radius:14px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:16px;font-weight:700">Change</button>
+  </div>
+
+  <input type="text" aria-label="Notes (optional)" placeholder="Notes (optional)" style="height:56px;box-sizing:border-box;border-radius:16px;border:1px solid #C9D6D3;background:#fff;padding:0 16px;font-size:16px;color:#12302C">
+
+  <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #D5E0DD;border-radius:16px;padding:8px 12px 8px 14px;min-height:64px">
+    <div style="flex-grow:1">
+      <div style="font-size:16px;font-weight:700">Remind me for the next dose</div>
+      <div style="font-size:14px;color:#4F6662">{{reminderText}}</div>
+    </div>
+    <button onClick="{{toggleRemind}}" role="switch" aria-checked="{{remind}}" aria-label="Remind me for the next dose" style="width:64px;height:40px;border-radius:20px;border:2px solid #1B645C;background:{{switchBg}};position:relative;padding:0;flex-shrink:0">
+      <span style="position:absolute;top:4px;inset-inline-start:{{knobPos}};width:28px;height:28px;border-radius:14px;background:{{knobBg}}"></span>
+    </button>
+  </div>
+
+  <a href="{{saveHref}}" style="margin-top:auto;height:64px;border-radius:20px;background:#1B645C;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0">Save dose for Maya</a>
+  <sc-if value="{{editing}}" hint-placeholder-val="{{false}}">
+    <div style="position:absolute;inset:0;background:rgba(18,48,44,.5);display:flex;flex-direction:column;justify-content:flex-end;z-index:10">
+      <div role="dialog" aria-label="Date and time" style="background:#fff;border-radius:24px 24px 0 0;padding:20px 20px 24px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:20px;font-weight:700">Date and time</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <button onClick="{{dayBack}}" aria-label="Previous day" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">‹</button>
+          <div style="flex-grow:1;text-align:center;font-size:18px;font-weight:700" aria-live="polite">{{dateTxt}}</div>
+          <button onClick="{{dayFwd}}" aria-label="Next day" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0;opacity:{{fwdOpacity}}">›</button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:6px">
+          <button onClick="{{hMinus}}" aria-label="Hour earlier" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">−</button>
+          <div style="width:48px;text-align:center;font-size:30px;font-weight:700" aria-live="polite">{{hh}}</div>
+          <button onClick="{{hPlus}}" aria-label="Hour later" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">+</button>
+          <div style="font-size:30px;font-weight:700;width:14px;text-align:center">:</div>
+          <button onClick="{{mMinus}}" aria-label="5 minutes earlier" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">−</button>
+          <div style="width:48px;text-align:center;font-size:30px;font-weight:700" aria-live="polite">{{mm}}</div>
+          <button onClick="{{mPlus}}" aria-label="5 minutes later" style="width:56px;height:56px;border-radius:16px;border:2px solid #1B645C;background:#fff;color:#1B645C;font-size:26px;font-weight:700;padding:0">+</button>
+        </div>
+        <div style="font-size:13px;color:#4F6662;text-align:center">Dates in the future are not allowed.</div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px">
+          <button onClick="{{resetDt}}" style="height:56px;border-radius:16px;border:2px solid #7A8F8B;background:#fff;color:#12302C;font-size:16px;font-weight:600">Set to now and lock</button>
+          <button onClick="{{doneDt}}" style="height:56px;border-radius:16px;border:0;background:#1B645C;color:#fff;font-size:17px;font-weight:700">Done</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { med: 'para', amount: 7.5, unit: 'ml', menu: false, remind: true, changed: false, editing: false, dayOff: 0, min: 14 * 60 + 45 }; }
+  renderVals() {
+    const st = this.state, NOW = 14 * 60 + 45;
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], mons = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const dd = new Date(2026, 9, 7 - st.dayOff);
+    const dateTxt = (st.dayOff === 0 ? 'Today · ' : st.dayOff === 1 ? 'Yesterday · ' : '') + days[dd.getDay()] + ' ' + dd.getDate() + ' ' + mons[dd.getMonth()];
+    const p2 = n => String(n).padStart(2, '0');
+    const hmStr = t => { const x = ((t % 1440) + 1440) % 1440; return p2(Math.floor(x / 60)) + ':' + p2(x % 60); };
+    const setMin = d => () => { let m = ((st.min + d) % 1440 + 1440) % 1440; if (st.dayOff === 0 && m > NOW) m = NOW; this.setState({ min: m, changed: true }); };
+    const dt = {
+      dateShort: (st.dayOff === 0 ? 'Today' : st.dayOff === 1 ? 'Yesterday' : days[dd.getDay()]) + ' ' + dd.getDate() + ' ' + mons[dd.getMonth()],
+      timeStr: hmStr(st.min), changed: st.changed,
+      lockText: st.changed ? 'Time locked' : 'Not locked yet · tap Now',
+      lockInk: st.changed ? '#1B645C' : '#4F6662',
+      nowBg: st.changed ? '#1B645C' : '#fff', nowInk: st.changed ? '#fff' : '#1B645C',
+      nowDt: () => this.setState({ changed: true, dayOff: 0, min: NOW }),
+      dateTxt, hh: p2(Math.floor(st.min / 60)), mm: p2(st.min % 60),
+      editing: st.editing, fwdOpacity: st.dayOff === 0 ? 0.35 : 1,
+      openDt: () => this.setState({ editing: true }),
+      doneDt: () => this.setState({ editing: false }),
+      resetDt: () => this.setState({ changed: true, dayOff: 0, min: NOW, editing: false }),
+      dayBack: () => this.setState({ dayOff: Math.min(7, st.dayOff + 1), changed: true }),
+      dayFwd: () => this.setState({ dayOff: Math.max(0, st.dayOff - 1), min: st.dayOff === 1 ? Math.min(st.min, NOW) : st.min, changed: true }),
+      hMinus: setMin(-60), hPlus: setMin(60), mMinus: setMin(-5), mPlus: setMin(5)
+    };
+    // Sample data only. Intervals come from safety_rules.json / the user's medicine settings.
+    const M = {
+      para: { label: 'Paracetamol', ingredient: 'paracetamol', sub: 'Active ingredient: paracetamol', last: 7.5, lastUnit: 'ml', prevText: '7.5 ml · today 12:50', prevSub: '1 h 55 min ago · recorded by you', interval: 6, saveHref: 'DoseWarning.dc.html' },
+      ibu: { label: 'Ibuprofen', ingredient: 'ibuprofen', sub: 'Active ingredient: ibuprofen', last: 5, lastUnit: 'ml', prevText: '5 ml · yesterday 20:10', prevSub: '18 h 35 min ago · recorded by you', interval: 8, saveHref: 'Main.dc.html' }
+    };
+    const m = M[st.med];
+    const meds = Object.keys(M).map(k => ({
+      label: M[k].label, sub: M[k].sub, on: st.med === k, mark: st.med === k ? '✓' : '', bg: st.med === k ? '#E8F1EF' : '#fff',
+      pick: () => this.setState({ med: k, amount: M[k].last, unit: M[k].lastUnit, menu: false })
+    }));
+    const units = [['ml', 'ml'], ['pills', 'Pills']].map(([k, label]) => ({
+      label, on: st.unit === k, bg: st.unit === k ? '#1B645C' : '#fff', ink: st.unit === k ? '#fff' : '#1B645C',
+      pick: () => this.setState({ unit: k, amount: k === 'pills' ? 1 : m.last })
+    }));
+    const amountTxt = String(+st.amount.toFixed(1));
+    const unitText = st.unit === 'pills' ? (st.amount === 1 ? 'pill' : 'pills') : 'ml';
+    const total = st.min + m.interval * 60;
+    return Object.assign({}, dt, {
+      meds, units, menuOpen: st.menu, chevRot: st.menu ? '180deg' : '0deg',
+      toggleMenu: () => this.setState({ menu: !st.menu }),
+      medLabel: m.label,
+      ingredient: m.ingredient.toUpperCase(),
+      prevText: m.prevText, prevSub: m.prevSub,
+      amount: amountTxt, unitText,
+      less: () => this.setState({ amount: Math.max(0.5, st.amount - 0.5) }),
+      more: () => this.setState({ amount: st.amount + 0.5 }),
+      remind: st.remind,
+      reminderText: st.remind ? ('At ' + hmStr(total) + (total >= 1440 ? ' (next day)' : '') + ' · ' + m.interval + ' h after this dose (your interval setting)') : 'Off. No notification will be sent.',
+      toggleRemind: () => this.setState({ remind: !st.remind }),
+      switchBg: st.remind ? '#1B645C' : '#fff',
+      knobBg: st.remind ? '#fff' : '#1B645C',
+      knobPos: st.remind ? '28px' : '4px',
+      saveHref: m.saveHref
+    });
+  }
+}
+</script>
+</body>
+</html>

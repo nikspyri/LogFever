@@ -1,0 +1,36 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Contacts.dc.html": { "h": 844, "title": "Contacts", "w": 390, "x": 470, "y": 964 },
+    "DoseWarning.dc.html": { "h": 844, "title": "Dose: early warning", "w": 390, "x": 940, "y": 0 },
+    "LogTemp.dc.html": { "h": 844, "is_interactive": true, "title": "Log temperature", "w": 390, "x": 470, "y": 0 },
+    "Main.dc.html": { "h": 844, "is_interactive": true, "title": "Home", "w": 390, "x": 0, "y": 0 },
+    "Onboarding.dc.html": { "h": 844, "title": "Onboarding", "w": 390, "x": 940, "y": 964 },
+    "Timeline.dc.html": { "h": 844, "title": "Timeline", "w": 390, "x": 0, "y": 964 },
+    "Settings.dc.html": { "h": 844, "title": "Settings", "w": 390, "x": 0, "y": 1928 },
+    "Symptoms.dc.html": { "h": 844, "title": "Log symptoms", "w": 390, "x": 470, "y": 1928, "is_interactive": true },
+    "Siblings.dc.html": { "h": 844, "title": "Home: two children", "w": 390, "x": 940, "y": 1928 },
+    "Night.dc.html": { "h": 844, "title": "Home: night mode", "w": 390, "x": 1410, "y": 1928 },
+    "LogDose.dc.html": { "h": 844, "title": "Log dose", "w": 390, "x": 1410, "y": 964, "is_interactive": true },
+    "AddMedicine.dc.html": { "h": 844, "title": "Add medicine", "w": 390, "x": 1880, "y": 964, "is_interactive": true }
+  },
+  "createdOnFiles": { "at": "2026-10-07T12:00:00Z", "v": 1 },
+  "designSystems": [],
+  "launch": { "view": "canvas" },
+  "notes": {
+    "n1": {
+      "text": "Text 14px minimum, primary targets 56px+, status always icon + words, never colour alone. Fever thresholds and dose intervals shown here are placeholders: the app reads them from safety_rules.json.",
+      "w": 300,
+      "x": 1410,
+      "y": 0
+    },
+    "t1": { "kind": "title1", "maxW": 1330, "text": "Log Fever: core screens", "w": 240, "x": 0, "y": -260 }
+  },
+  "order": [
+    "Main.dc.html", "LogTemp.dc.html", "DoseWarning.dc.html", "Timeline.dc.html", "Contacts.dc.html",
+    "Onboarding.dc.html", "Settings.dc.html", "Symptoms.dc.html", "Siblings.dc.html", "Night.dc.html", "LogDose.dc.html", "AddMedicine.dc.html"
+  ],
+  "pages": [],
+  "title": "Log Fever UI"
+}
